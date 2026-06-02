@@ -2,10 +2,10 @@
   "manifest_version": "0.4",
   "name": "vturb-analytics",
   "display_name": "VTurb Analytics",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "icon": "icon.png",
-  "description": "Analytics da VTurb dentro do Claude — métricas, conversões, sessões e AB tests.",
-  "long_description": "Acessa todos os 28 endpoints da Public Analytics API da VTurb (https://analytics.vturb.net): views, plays, finishes, conversões com receita em USD/BRL/EUR, engagement por segundo, traffic origin, AB tests (comparison groups), live users, quota usage. Cada tool é nomeada vturb_<categoria>_<rest> e exposta diretamente — sem precisar 'descobrir' nada. Roda 100% local com Node.js embarcado no Claude Desktop. Seu token nunca sai da sua máquina.",
+  "description": "Analytics da VTurb dentro do Claude — métricas, conversões, sessões, AB tests e dashboard visual.",
+  "long_description": "Acessa todos os 28 endpoints da Public Analytics API da VTurb (https://analytics.vturb.net): views, plays, finishes, conversões com receita em USD/BRL/EUR, engagement por segundo, traffic origin, AB tests (comparison groups), live users, quota usage. Inclui o dashboard visual `vturb_player_overview` que renderiza KPIs + gráfico de conversões diárias + plataformas ativas + quota num painel HTML dentro da conversa. Roda 100% local com Node.js embarcado no Claude Desktop. Seu token nunca sai da sua máquina.",
   "author": {
     "name": "Brenno Pinheiro",
     "email": "brennolacerda@gmail.com",
@@ -154,6 +154,10 @@
     {
       "name": "vturb_turbo_stats_by_player",
       "description": "Turbo dashboard stats per player."
+    },
+    {
+      "name": "vturb_player_overview",
+      "description": "Visual dashboard: KPIs (views/plays/finishes/conversões/receita USD+BRL) + gráfico diário + plataformas ativas + quota — renderizado como HTML embutido na conversa."
     }
   ],
   "compatibility": {

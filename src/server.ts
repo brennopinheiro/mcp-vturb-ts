@@ -16,6 +16,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 
 import { registerAllTools } from "./tools/index.js";
 import { VTURB_HELP_TEXT } from "./help.js";
+import { registerPlayerOverview } from "./apps/playerOverview.js";
 
 const server = new McpServer({
   name: "vturb-analytics",
@@ -39,12 +40,15 @@ server.registerTool(
 );
 
 const registered = registerAllTools(server);
+registerPlayerOverview(server);
 
 async function main(): Promise<void> {
   const transport = new StdioServerTransport();
   await server.connect(transport);
   // eslint-disable-next-line no-console
-  console.error(`vturb-mcp ready — ${registered + 1} tools registered`);
+  console.error(
+    `vturb-mcp ready — ${registered + 2} tools registered (incl. player_overview)`,
+  );
 }
 
 main().catch((err) => {
