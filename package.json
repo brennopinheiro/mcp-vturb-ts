@@ -1,0 +1,32 @@
+{
+  "name": "vturb-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for the VTurb Public Analytics API",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "vturb-mcp": "dist/server.js"
+  },
+  "files": [
+    "dist",
+    "specs",
+    "README.md",
+    "icon.png"
+  ],
+  "scripts": {
+    "generate": "tsx scripts/generate.ts",
+    "build": "tsc",
+    "pack-mcpb": "npm run generate && npm run build && npm prune --omit=dev && mcpb pack . dist-mcpb/vturb-analytics-$npm_package_version.mcpb && npm install"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.7.0"
+  }
+}

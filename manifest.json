@@ -1,0 +1,166 @@
+{
+  "manifest_version": "0.4",
+  "name": "vturb-analytics",
+  "display_name": "VTurb Analytics",
+  "version": "0.1.0",
+  "icon": "icon.png",
+  "description": "Analytics da VTurb dentro do Claude — métricas, conversões, sessões e AB tests.",
+  "long_description": "Acessa todos os 28 endpoints da Public Analytics API da VTurb (https://analytics.vturb.net): views, plays, finishes, conversões com receita em USD/BRL/EUR, engagement por segundo, traffic origin, AB tests (comparison groups), live users, quota usage. Cada tool é nomeada vturb_<categoria>_<rest> e exposta diretamente — sem precisar 'descobrir' nada. Roda 100% local com Node.js embarcado no Claude Desktop. Seu token nunca sai da sua máquina.",
+  "author": {
+    "name": "Brenno Pinheiro",
+    "email": "brennolacerda@gmail.com",
+    "url": "https://github.com/brennopinheiro"
+  },
+  "homepage": "https://github.com/brennopinheiro/mcp-vturb-ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brennopinheiro/mcp-vturb-ts"
+  },
+  "license": "MIT",
+  "keywords": ["vturb", "analytics", "video", "conversions", "vsl"],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/server.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/server.js"],
+      "env": {
+        "VTURB_API_TOKEN": "${user_config.api_token}"
+      }
+    }
+  },
+  "user_config": {
+    "api_token": {
+      "type": "string",
+      "title": "API Token da VTurb",
+      "description": "Pegue em app.vturb.com/settings/analytics-api → \"Generate New API Key\". O token fica armazenado de forma segura no keychain do seu sistema.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "tools": [
+    {
+      "name": "vturb_help",
+      "description": "VTurb entry point — returns the catalog of 28 tools."
+    },
+    {
+      "name": "vturb_clicks_total_by_company_day",
+      "description": "Total clicks by company and day."
+    },
+    {
+      "name": "vturb_clicks_total_by_company_timed",
+      "description": "Total clicks by company at a given video second."
+    },
+    {
+      "name": "vturb_comparison_groups_list",
+      "description": "List AB tests (comparison groups)."
+    },
+    {
+      "name": "vturb_comparison_groups_stats",
+      "description": "Stats for up to 2 players of an AB test."
+    },
+    {
+      "name": "vturb_conversions_active_platforms",
+      "description": "Active platforms for a company."
+    },
+    {
+      "name": "vturb_conversions_stats_by_day",
+      "description": "Conversion totals per day for a company and player."
+    },
+    {
+      "name": "vturb_conversions_video_timed",
+      "description": "Conversions grouped by video second."
+    },
+    {
+      "name": "vturb_custom_metrics_list",
+      "description": "List all custom metrics of a player."
+    },
+    {
+      "name": "vturb_events_leaderboard",
+      "description": "Player leaderboards by video engagement."
+    },
+    {
+      "name": "vturb_events_total_by_company",
+      "description": "Event totals and metrics for a company."
+    },
+    {
+      "name": "vturb_events_total_by_company_day",
+      "description": "Event totals per day for a company."
+    },
+    {
+      "name": "vturb_events_total_by_company_players",
+      "description": "Event totals per player in a company."
+    },
+    {
+      "name": "vturb_headlines_stats_by_player",
+      "description": "Headlines dashboard stats per player."
+    },
+    {
+      "name": "vturb_players_list",
+      "description": "List players, with optional name search."
+    },
+    {
+      "name": "vturb_quota_usage",
+      "description": "Current API quota — used / limit / remaining."
+    },
+    {
+      "name": "vturb_sessions_live_users",
+      "description": "Live users for a player by domain."
+    },
+    {
+      "name": "vturb_sessions_stats",
+      "description": "Session stats for a player in a date range."
+    },
+    {
+      "name": "vturb_sessions_stats_by_day",
+      "description": "Session stats per day for a player."
+    },
+    {
+      "name": "vturb_sessions_stats_by_field",
+      "description": "Session stats grouped by a specified field."
+    },
+    {
+      "name": "vturb_sessions_stats_by_field_by_day",
+      "description": "Session stats grouped by field and day."
+    },
+    {
+      "name": "vturb_times_user_engagement",
+      "description": "Engagement: users reaching each video second."
+    },
+    {
+      "name": "vturb_times_user_engagement_by_day",
+      "description": "Engagement rate per day."
+    },
+    {
+      "name": "vturb_times_user_engagement_by_field",
+      "description": "Engagement grouped by a specified field."
+    },
+    {
+      "name": "vturb_times_user_engagement_by_traffic_origin",
+      "description": "Engagement grouped by traffic origin."
+    },
+    {
+      "name": "vturb_traffic_origin_stats",
+      "description": "Traffic origin stats grouped by field."
+    },
+    {
+      "name": "vturb_traffic_origin_stats_by_day",
+      "description": "Traffic origin stats grouped by field and day."
+    },
+    {
+      "name": "vturb_traffic_origin_valid_utms",
+      "description": "Counts of valid UTMs for a player."
+    },
+    {
+      "name": "vturb_turbo_stats_by_player",
+      "description": "Turbo dashboard stats per player."
+    }
+  ],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18"
+    }
+  }
+}

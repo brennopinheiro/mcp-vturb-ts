@@ -1,0 +1,20 @@
+# Dev artifacts
+src/
+scripts/
+tsconfig.json
+.gitignore
+.git/
+.github/
+
+# Test/build caches
+*.log
+.DS_Store
+.vscode/
+.idea/
+
+# Don't bundle previous bundles
+dist-mcpb/
+*.mcpb
+
+# Project docs not needed inside the bundle
+CLAUDE.md
